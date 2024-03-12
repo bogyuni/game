@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kill Sally</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style type="text/css">
+	*{padding:0;margin:0;}
+	html,body{height:100%;overflow:hidden;}
+	.wrap{height:100%;}
+	.setting_section{position:relative;height:100%;background:url('images/bg_main.png') no-repeat;background-size:100% 100%;}
+		.select_box{padding:10%;}
+	.input_section{display:none;position:relative;height:100%;background:#faf7ce;}
+		.content_article{position:absolute;left:50%;top:50%;width:200px;height:280px;margin:-140px 0 0 -100px;}
+			.back_box{overflow:hidden;position:absolute;width:200px;height:280px;}
+			.back_box .bottle_con{position:absolute;left:50%;background:#ce7526;border:3px solid #000;}
+			.back_box .bottle_top{z-index:4;top:90px;width:134px;height:30px;margin-left:-70px;border-radius:50%;}
+			.back_box .bottle_top2{z-index:6;top:92px;width:134px;height:30px;margin-left:-70px;border-radius:50%;border-top:0;background:none;}
+			.back_box .bottle_mid{z-index:2;top:40px;width:154px;height:260px;margin-left:-80px;border-radius:50%;}
+			.back_box .bottle_bot{z-index:4;top:207px;width:130px;height:70px;margin-left:-65px;border-radius:50%;border-top:0;border-right:0;border-left:0;}
+			.back_box .bottle_bot2{z-index:4;top:170px;width:150px;height:70px;margin-left:-75px;border-radius:50%;border-top:0;border-right:0;border-left:0;}
+			.back_box .bottle_bot3{z-index:4;top:120px;width:150px;height:56px;margin-left:-75px;border-radius:50%;border-top:0;border-right:0;border-left:0;}
+			.back_box .hide_con{z-index:3;position:absolute;left:50%;margin-left:-70px;background:#faf7ce;width:140px;}
+			.back_box .hide_con1{top:0;height:110px;}
+			.back_box .hide_con2{bottom:0;height:26px;}
+			.sal{z-index:5;overflow:hidden;position:absolute;top:42px;left:52px;width:92px;height:80px;border-radius:0 0 10% 10%;}
+			.sal img{position:absolute;left:0px;top:0px;}
+			.sal img.on{width:110%;}
+			.btn_inst_sword{z-index:6;position:absolute;width:12px;height:30px;background:#000;border:0;text-indent:-999px;}
+			.btn_inst_sword span{display:block;position:absolute;top:-1px;width:6px;height:32px;background:#ce7526;}
+
+			.btn_inst_sword1{left:40px;top:128px;border-radius: 20% 0 0 20%;
+				-ms-transform: rotate(10deg);
+				-webkit-transform: rotate(10deg);
+				transform: rotate(10deg);
+			}
+			.btn_inst_sword1 span{right:-1px;border-radius: 40% 0 0 40%;}
+			.btn_inst_sword2{left:90px;top:136px;}
+			.btn_inst_sword2 span{width:2px;}
+			.btn_inst_sword3{right:40px;top:128px;border-radius: 0 20% 20% 0;
+				-ms-transform: rotate(-10deg);
+				-webkit-transform: rotate(-10deg);
+				transform: rotate(-10deg);
+			}
+			.btn_inst_sword3 span{left:-1px;border-radius: 0 40% 40% 0;}
+			.btn_inst_sword4{left:40px;top:184px;border-radius: 20% 0 0 20%;
+				-ms-transform: rotate(-4deg);
+				-webkit-transform: rotate(-4deg);
+				transform: rotate(-4deg);
+			}
+			.btn_inst_sword4 span{right:-1px;border-radius: 40% 0 0 40%;}
+			.btn_inst_sword5{left:90px;top:194px;}
+			.btn_inst_sword5 span{width:2px;}
+			.btn_inst_sword6{right:40px;top:188px;border-radius: 0 20% 20% 0;
+				-ms-transform: rotate(4deg);
+				-webkit-transform: rotate(4deg);
+				transform: rotate(4deg);
+			}
+			.btn_inst_sword6 span{left:-1px;border-radius: 0 40% 40% 0;}
+			.btn_inst_sword7{left:50px;top:240px;height:24px;border-radius: 20% 0 0 20%;
+				-ms-transform: rotate(-10deg);
+				-webkit-transform: rotate(-10deg);
+				transform: rotate(-10deg);
+			}
+			.btn_inst_sword7 span{right:-1px;border-radius: 40% 0 0 40%;}
+			.btn_inst_sword8{left:90px;top:250px;height:24px;}
+			.btn_inst_sword8 span{width:2px;height:26px;}
+			.btn_inst_sword9{right:50px;top:240px;height:24px;border-radius: 0 20% 20% 0;
+				-ms-transform: rotate(10deg);
+				-webkit-transform: rotate(10deg);
+				transform: rotate(10deg);
+			}
+			.btn_inst_sword9 span{left:-1px;border-radius: 0 40% 40% 0;}
+	.diemsg{z-index:100;display:none;position:absolute;left:50%;top:50%;background:#fff;border:3px solid red;width:50%;text-align:center;padding:20px 0;margin:-25% 0 0 -25%;font-size:30px;font-weight:bold;white-space:nowrap;}
+</style>
+<script src="./jquery-1.11.1.min.js"></script>
+<script>
+	// 랜덤값
+	var resultNum = 0;
+	// 대상인원
+	var manNum;
+
+	$(function(){
+		$('.btn_next').on('click', function(){
+			manNum = $('.set_manNum').val();
+			resultNum = parseInt(Math.random() * manNum + 1);
+
+			for (i=0; i<manNum; i++){
+				$('.content_article').append('<button class="btn_inst_sword btn_inst_sword'+(i+1)+'" value="'+(i+1)+'">'+(i+1)+'<span></span></button>');
+			}
+			$('.setting_section').fadeOut();
+			$('.input_section').fadeIn();
+		});
+
+		$('.input_section').on('click','.btn_inst_sword', function(val){
+			val = parseInt(this.value);
+			if (val === resultNum){
+				$(this).css('background','blue');
+				//alert('You die...');
+				$('.sal img').attr('src', 'images/af.png').addClass('on');
+				//$('.input_section').css('background','red')
+				$('.diemsg').show().delay(600).fadeOut();
+			}else{
+				$(this).css('background','red');
+			}
+		});
+
+		//$('.btn_next').click();
+	});
+</script>
+</head>
+<body>
+
+<div class="wrap">
+	<div class="setting_section">
+		<div class="select_box">
+			<p>인원 수를 선택하세요</p>
+			<select class="set_manNum">
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+			<button class="btn_next">확인</button>
+		</div>
+	</div>
+
+	<div class="input_section">
+		<div class="content_article">
+			<div class="back_box">
+				<div class="sal"><img src="./bf.png" alt=""></div>
+				<div class="bottle_con bottle_top"></div>
+				<div class="bottle_con bottle_top2"></div>
+				<div class="bottle_con bottle_mid"></div>
+				<div class="hide_con hide_con1"></div>
+				<div class="hide_con hide_con2"></div>
+				<div class="bottle_con bottle_bot"></div>
+				<div class="bottle_con bottle_bot2"></div>
+				<div class="bottle_con bottle_bot3"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="diemsg">You Die</div>
+
+
+</body></html>

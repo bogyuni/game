@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Seotto Function</title>
+	<style type="text/css">
+		*{padding:0;margin:0;}
+		body{font:bold 18px/1 helvetica;background:#b1b1b1;}
+		li{list-style:none;}
+		button{font-weight:bold;padding:10px;margin:10px;margin-top:80px;}
+		.content{position:relative;height:200px;border:1px solid #000;background:#393939;}
+		.lotto_list{text-align:center;margin-top:220px;height:30px;padding:10px;border:1px solid #c4c4c4;background:#e6e6e6;}
+		.lotto_list li{position:absolute;display:inline-block;text-align:center;width:30px;height:30px;line-height:30px;margin-right:10px;border-radius:17px;color:#fff;border:2px solid #fff;}
+		.li0,.li1,.li2,.li3,.li4,.li5,.li6,.li7,.li8,.li9{background:#fcc43d;}
+		.li10,.li11,.li12,.li13,.li14,.li15,.li16,.li17,.li18,.li19{background:#8cc6e7;}
+		.li20,.li21,.li22,.li23,.li24,.li25,.li26,.li27,.li28,.li29{background:#f18d80;}
+		.li30,.li31,.li32,.li33,.li34,.li35,.li36,.li37,.li38,.li39{background:#a7a2de;}
+		.li40,.li41,.li42,.li43,.li44{background:#6bce9e;}
+		.number_list{border-top:1px solid #000;}
+		.number_list li{padding:10px;letter-spacing:5px;color:#ffe347;border-bottom:2px dotted #ffe347;background:#1c1c1c;}
+	</style>
+	<script src="./jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		// 처음 생성되는 로또
+		var defaultLotto = new Array();
+		// 뽑힌 로또들
+		var lottoList = new Array();
+		var lottoCount = 0;
+		var lottoTitNum = 0;
+
+		function createLotto(){
+			lottoCount = 0;
+			lottoList = new Array();
+			$(".lotto_list").empty();
+			for (i=0; i<45; i++){
+				defaultLotto[i] = i+1; 
+				$(".lotto_list").append('<li class="li'+i+'" style="left:'+Math.floor(Math.random()*88)+'%;top:'+Math.floor(Math.random()*85)+'%;z-index:'+Math.floor(Math.random()*45)+'">'+defaultLotto[i]+'</li>');
+			}
+		}
+
+		function randomLotto(){
+			if (lottoCount < 6){
+				var choiceLotto = Math.floor(Math.random()*45);
+				lottoList[lottoCount] = defaultLotto.splice(choiceLotto,1,null);
+				if (lottoList[lottoCount] == ''){
+					randomLotto();
+				}else{
+					for (i=0; i<45; i++){
+						if (i != choiceLotto){
+							$(".lotto_list li").eq(i).stop().animate({
+								left:(Math.floor(Math.random()*88))+'%',
+								top:(Math.floor(Math.random()*85))+'%'
+							},600)
+							.css({
+								zIndex:Math.floor(Math.random()*45)
+							});
+						}else{
+							$(".lotto_list li").eq(choiceLotto).css({
+								color:'black',
+								borderColor:'black'
+							})
+							.animate({
+								top : '235px',
+								left : '45%'
+							},600,function(){
+								$(this).css({
+									position:'static'
+								});
+							});
+						}
+					}
+					lottoCount++;
+				}
+				if (lottoCount == 6){
+					$("button.btn_one").text('Next').css('color','red');
+				}
+			}else{
+				lottoTitNum++;
+				lottoList.sort(function(a,b){
+					return a-b;
+				});
+				$("button.btn_one").text('Start').css('color','black');
+				$(".number_list").append('<li>'+lottoTitNum+'번 '+lottoList+'</li>')
+				createLotto();
+			}
+		}
+
+		createLotto();
+		$("button.btn_one").click(function(){
+			randomLotto();
+			if (lottoCount == 0){
+				$("button.btn_all").show();
+			}else{
+				$("button.btn_all").hide();
+			}
+		});
+
+		$("button.btn_all").click(function(){
+			for (j=0; j<7; j++){
+				randomLotto();
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<div class="content">
+		<ul class="lotto_list"><li class="li0" style="left:80%;top:73%;z-index:7">1</li><li class="li1" style="left:72%;top:31%;z-index:7">2</li><li class="li2" style="left:32%;top:38%;z-index:26">3</li><li class="li3" style="left:83%;top:75%;z-index:23">4</li><li class="li4" style="left:61%;top:70%;z-index:23">5</li><li class="li5" style="left:13%;top:76%;z-index:26">6</li><li class="li6" style="left:21%;top:12%;z-index:5">7</li><li class="li7" style="left:31%;top:19%;z-index:7">8</li><li class="li8" style="left:49%;top:36%;z-index:4">9</li><li class="li9" style="left:72%;top:41%;z-index:4">10</li><li class="li10" style="left:5%;top:73%;z-index:2">11</li><li class="li11" style="left:30%;top:20%;z-index:37">12</li><li class="li12" style="left:45%;top:10%;z-index:41">13</li><li class="li13" style="left:37%;top:10%;z-index:7">14</li><li class="li14" style="left:19%;top:41%;z-index:41">15</li><li class="li15" style="left:51%;top:43%;z-index:43">16</li><li class="li16" style="left:41%;top:39%;z-index:22">17</li><li class="li17" style="left:71%;top:47%;z-index:18">18</li><li class="li18" style="left:9%;top:33%;z-index:39">19</li><li class="li19" style="left:39%;top:0%;z-index:14">20</li><li class="li20" style="left:7%;top:12%;z-index:24">21</li><li class="li21" style="left:58%;top:76%;z-index:5">22</li><li class="li22" style="left:61%;top:14%;z-index:39">23</li><li class="li23" style="left:37%;top:20%;z-index:14">24</li><li class="li24" style="left:50%;top:58%;z-index:5">25</li><li class="li25" style="left:64%;top:74%;z-index:24">26</li><li class="li26" style="left:75%;top:67%;z-index:11">27</li><li class="li27" style="left:80%;top:47%;z-index:4">28</li><li class="li28" style="left:24%;top:24%;z-index:20">29</li><li class="li29" style="left:11%;top:70%;z-index:33">30</li><li class="li30" style="left:84%;top:70%;z-index:11">31</li><li class="li31" style="left:55%;top:6%;z-index:9">32</li><li class="li32" style="left:22%;top:13%;z-index:23">33</li><li class="li33" style="left:31%;top:30%;z-index:33">34</li><li class="li34" style="left:75%;top:25%;z-index:29">35</li><li class="li35" style="left:59%;top:64%;z-index:30">36</li><li class="li36" style="left:87%;top:25%;z-index:41">37</li><li class="li37" style="left:85%;top:31%;z-index:12">38</li><li class="li38" style="left:62%;top:27%;z-index:23">39</li><li class="li39" style="left:78%;top:67%;z-index:29">40</li><li class="li40" style="left:34%;top:21%;z-index:6">41</li><li class="li41" style="left:36%;top:63%;z-index:27">42</li><li class="li42" style="left:21%;top:31%;z-index:41">43</li><li class="li43" style="left:5%;top:61%;z-index:43">44</li><li class="li44" style="left:2%;top:43%;z-index:2">45</li></ul>
+	</div>
+	<button class="btn_one">Start</button>
+	<button class="btn_all">All</button>
+	<ul class="number_list"></ul>
+</div>
+</body>
+</html>

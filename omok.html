@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>omok</title>
+	<style type="text/css">
+		*{padding:0;margin:0;}
+		.box{border-bottom:3px double black;}
+		table{border-spacing:0;border-collapse:collapse;}
+		td{border:0;}
+		button{vertical-align:top;width:100%;height:100%;border:0;text-align:center;
+			background-color: transparent;
+			background-image:
+				linear-gradient(
+					0deg,
+					transparent 48%,
+					rgba(0, 0, 0, 1) 50%,
+					transparent 52%
+				),
+				linear-gradient(
+					90deg,
+					transparent 48%,
+					rgba(0, 0, 0, 1) 50%,
+					transparent 52%
+				);
+		}
+		span{display:block;box-sizing:border-box;width:50%;height:50%;margin:25%;border:1px solid #000;border-radius:50%;}
+		.us1{background:black;}
+		.us2{background:white;}
+		.re{position:fixed;display:block;padding:4px;text-align:center;border:1px solid red;color:#f00;background:#fff;}
+	</style>
+	<script src="./jquery-1.11.1.min.js"></script>
+	<script>
+	$(function(){
+		var clickChData;
+		var windW = $(window).width();
+		$('.box').css({
+			height:windW+'px'
+		});
+		$('td').css({width:windW*0.06+'px',height:windW*0.06+'px'});
+		$('button').css({
+			width:windW*0.06+'px',height:windW*0.06+'px',
+			backgroundSize: windW*0.06+'px '+windW*0.06+'px'
+		});
+		var btn_num = 0;
+		$('button').each(function(){
+			btn_num++;
+			$(this).attr('value',btn_num);
+		});
+
+		var nowStone;
+
+		$('button').click(function(){
+			if (!$(this).data('clickBtn')){
+				if (!$('.box').data('click')){
+					$(this).append('<span class="us1"></span>');
+					$('.box').data('click',1);
+				}else{
+					$(this).append('<span class="us2"></span>');
+					$('.box').data('click',0);
+				}
+				$(this).data('clickBtn',1);
+			}
+			clickChData = $(this).val();
+		});
+
+		$('.re').click(function(){
+			var check_stone = $('.box').data('click');
+			if (check_stone == 0){
+				$('.box').data('click',1);
+			}else{
+				$('.box').data('click',0);
+			}
+			$('button').each(function(){
+				if ($(this).val() == clickChData){
+					$(this).html('');
+					$(this).data('clickBtn',0);
+				}
+			});
+			//alert($('.box').data('click'));
+		});
+	});
+	</script>
+</head>
+<body>
+<a class="re">return</a>
+
+<div class="box" style="height: 1680px;">
+	<!--table>tbody>tr*16>td*16>button.btn$-->
+	<table>
+		<tbody>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="1" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="2" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="3" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="4" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="5" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="6" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="7" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="8" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="9" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="10" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="11" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="12" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="13" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="14" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="15" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="16" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="17" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="18" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="19" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="20" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="21" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="22" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="23" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="24" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="25" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="26" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="27" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="28" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="29" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="30" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="31" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="32" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="33" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="34" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="35" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="36" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="37" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="38" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="39" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="40" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="41" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="42" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="43" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="44" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="45" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="46" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="47" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="48" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="49" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="50" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="51" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="52" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="53" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="54" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="55" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="56" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="57" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="58" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="59" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="60" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="61" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="62" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="63" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="64" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="65" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="66" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="67" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="68" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="69" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="70" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="71" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="72" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="73" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="74" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="75" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="76" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="77" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="78" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="79" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="80" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="81" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="82" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="83" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="84" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="85" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="86" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="87" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="88" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="89" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="90" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="91" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="92" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="93" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="94" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="95" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="96" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="97" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="98" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="99" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="100" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="101" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="102" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="103" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="104" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="105" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="106" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="107" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="108" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="109" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="110" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="111" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="112" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="113" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="114" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="115" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="116" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="117" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="118" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="119" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="120" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="121" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="122" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="123" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="124" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="125" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="126" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="127" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="128" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="129" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="130" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="131" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="132" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="133" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="134" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="135" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="136" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="137" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="138" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="139" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="140" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="141" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="142" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="143" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="144" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="145" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="146" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="147" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="148" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="149" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="150" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="151" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="152" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="153" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="154" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="155" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="156" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="157" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="158" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="159" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="160" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="161" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="162" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="163" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="164" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="165" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="166" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="167" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="168" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="169" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="170" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="171" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="172" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="173" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="174" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="175" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="176" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="177" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="178" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="179" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="180" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="181" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="182" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="183" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="184" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="185" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="186" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="187" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="188" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="189" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="190" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="191" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="192" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="193" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="194" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="195" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="196" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="197" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="198" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="199" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="200" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="201" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="202" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="203" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="204" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="205" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="206" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="207" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="208" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="209" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="210" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="211" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="212" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="213" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="214" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="215" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="216" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="217" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="218" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="219" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="220" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="221" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="222" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="223" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="224" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="225" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="226" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="227" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="228" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="229" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="230" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="231" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="232" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="233" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="234" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="235" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="236" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="237" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="238" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="239" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="240" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+			<tr>
+				<td style="width: 100.8px; height: 100.8px;"><button value="241" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="242" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="243" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="244" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="245" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="246" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="247" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="248" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="249" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="250" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="251" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="252" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="253" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="254" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="255" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+				<td style="width: 100.8px; height: 100.8px;"><button value="256" style="width: 100.8px; height: 100.8px; background-size: 100.8px 100.8px;"></button></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+<h1>2인용 오목</h1>
+
+</body>
+</html>
