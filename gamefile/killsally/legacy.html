@@ -7,7 +7,7 @@
 	*{padding:0;margin:0;}
 	html,body{height:100%;overflow:hidden;}
 	.wrap{height:100%;}
-	.setting_section{position:relative;height:100%;background:url('images/bg_main.png') no-repeat;background-size:100% 100%;}
+	.setting_section{position:relative;height:100%;background:url('./assets/bg_main.png') no-repeat;background-size:100% 100%;}
 		.select_box{padding:10%;}
 	.input_section{display:none;position:relative;height:100%;background:#faf7ce;}
 		.content_article{position:absolute;left:50%;top:50%;width:200px;height:280px;margin:-140px 0 0 -100px;}
@@ -72,7 +72,7 @@
 			.btn_inst_sword9 span{left:-1px;border-radius: 0 40% 40% 0;}
 	.diemsg{z-index:100;display:none;position:absolute;left:50%;top:50%;background:#fff;border:3px solid red;width:50%;text-align:center;padding:20px 0;margin:-25% 0 0 -25%;font-size:30px;font-weight:bold;white-space:nowrap;}
 </style>
-<script src="../asset/js/jquery-1.11.1.min.js"></script>
+<script src="./assets/jquery-1.11.1.min.js"></script>
 <script>
 	// 랜덤값
 	var resultNum = 0;
@@ -96,7 +96,7 @@
 			if (val === resultNum){
 				$(this).css('background','blue');
 				//alert('You die...');
-				$('.sal img').attr('src', 'images/af.png').addClass('on');
+				$('.sal img').attr('src', './assets/af.png').addClass('on');
 				//$('.input_section').css('background','red')
 				$('.diemsg').show().delay(600).fadeOut();
 			}else{
@@ -131,7 +131,7 @@
 	<div class="input_section">
 		<div class="content_article">
 			<div class="back_box">
-				<div class="sal"><img src="./bf.png" alt=""></div>
+				<div class="sal"><img src="./assets/bf.png" alt=""></div>
 				<div class="bottle_con bottle_top"></div>
 				<div class="bottle_con bottle_top2"></div>
 				<div class="bottle_con bottle_mid"></div>
